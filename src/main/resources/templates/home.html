@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Search</title>
+</head>
+<body>
+    <h2>Log Search</h2>
+    <form action="/findByLevel" method="get">
+        <label for="searchText">Search Level:</label>       
+        <input type="text" id="level" name="level" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <form action="/findByMessage" method="get">
+        <label for="message">Message:</label>
+        <input type="text" id="message" name="message">
+        <button type="submit">Filter by Message</button>
+    </form>
+
+    <form action="/findByResourceId" method="get">
+        <label for="resourceId">ResourceId:</label>
+        <input type="text" id="resourceId" name="resourceId">
+        <button type="submit">Filter by ResourceId</button>
+    </form>
+
+    <form action="/findByTimestamp" method="get">
+        <label for="timestamp">Timestamp:</label>
+        <input type="text" id="startTime" name="startTime"><input type="text" name="endTime" id="endTime">
+        <button type="submit">Filter by Timestamp</button>
+    </form>
+    <form action="/traceId" method="get">
+        <label for="traceId">Trace ID:</label>
+        <input type="text" id="traceId" name="traceId">
+        <button type="submit">Filter by Trace ID</button>
+    </form>
+    <form action="/spanId" method="get">
+        <label for="commit">Span Id:</label>
+        <input type="text" id="spanId" name="spanId">
+        <button type="submit">Filter by Span Id</button>
+    </form>
+    <form action="/commit" method="get">
+        <label for="commit">Commit:</label>
+        <input type="text" id="commit" name="commit">
+        <button type="submit">Filter by Commit</button>
+    </form>
+    <form action="/metadata/parentResourceId" method="get">
+        <label for="parentResourceId">Parent ResourceId:</label>
+        <input type="text" id="parentResourceId" name="parentResourceId">
+        <button type="submit">Filter by Parent ResourceId</button>
+    </form>
+
+    <div th:if="${logs}">
+        <h3>Search Results:</h3>
+        <ul>
+            <li th:each="log : ${logs}">
+                <p>
+                    <strong>Id:</strong> <span th:text="${log.id}"></span><br>
+                    <strong>Level:</strong> <span th:text="${log.level}"></span><br>
+                    <strong>Message:</strong> <span th:text="${log.message}"></span><br>
+                    <strong>ResourceId:</strong> <span th:text="${log.resourceId}"></span><br>
+                    <strong>Timestamp:</strong> <span th:text="${log.timestamp}"></span><br>
+                    <strong>TraceId:</strong> <span th:text="${log.traceId}"></span><br>
+                    <strong>SpanId:</strong> <span th:text="${log.spanId}"></span><br>
+                    <strong>Commit:</strong> <span th:text="${log.commit}"></span><br>
+                    <strong>Metadata:</strong> <span th:text="${log.metadata}"></span><br>
+                </p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
