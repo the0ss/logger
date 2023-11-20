@@ -25,7 +25,7 @@ How to run the code Locally:
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/dyte-submissions/november-2023-hiring-the0ss.git
+   git clone https://github.com/the0ss/logger.git
    ```
 2. Open /logger folder in your desired Code Editor(Preferred VS Code with Extensions and IntelliJ)
 
